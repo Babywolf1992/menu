@@ -69,11 +69,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         if (sender.state == UIGestureRecognizerStateEnded) {
             //(sender.view.transform.tx > self.view.frame.size.width / 2 && velocitypoint.x >= 0)表示滑动超过一半并且方向向右，则右边至最大
-            if ((sender.view.transform.tx > self.view.frame.size.width / 2 && velocitypoint.x >= 0) || velocitypoint.x > 1000) {
+            if ((sender.view.transform.tx > self.view.frame.size.width / 2 && velocitypoint.x >= 0) || (velocitypoint.x > 700 && sender.view.transform.tx > 0)) {
 //                NSLog(@"右至最大");
                 sender.view.transform = CGAffineTransformMakeTranslation(kMaxOffsetX, 0);
                 sender.view.transform = CGAffineTransformScale(sender.view.transform, 1, (self.view.frame.size.height-2*kMaxOffsetX*scale)/self.view.frame.size.height);
-            }else if ((sender.view.transform.tx < (-self.view.frame.size.width / 2) && velocitypoint.x <= 0) || velocitypoint.x < -1000){
+            }else if ((sender.view.transform.tx < (-self.view.frame.size.width / 2) && velocitypoint.x <= 0) || (velocitypoint.x < -700 && sender.view.transform.tx < 0)){
 //                NSLog(@"左至最大");
                 sender.view.transform = CGAffineTransformMakeTranslation(-kMaxOffsetX, 0);
                 sender.view.transform = CGAffineTransformScale(sender.view.transform, 1, (self.view.frame.size.height-2*kMaxOffsetX*scale)/self.view.frame.size.height);
